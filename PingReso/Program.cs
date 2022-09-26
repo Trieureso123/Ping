@@ -27,7 +27,7 @@ namespace PingReso
 
         static void Main(string[] args)
         {
-            string email = "Trieuhchse161563@fpt.edu.vn";
+            string email = "trieuhchse161563@fpt.edu.vn";
             string body = "bla bla bla";
 
             sendEmail(email, body);
@@ -131,20 +131,22 @@ namespace PingReso
             {
                 MailMessage mail = new MailMessage();
                 mail.To.Add(email);
-                mail.From = new MailAddress("Trieuhchse161563@fpt.edu.vn");
-                mail.Subject = "sub";
+                mail.From = new MailAddress("trieuhchse161563@fpt.edu.vn");
+                mail.Subject = "Test j j đó";
 
                 mail.Body = body;
 
                 mail.IsBodyHtml = true;
                 SmtpClient smtp = new SmtpClient();
                 smtp.Host = "smtp.gmail.com"; //Or Your SMTP Server Address
-                smtp.Credentials = new System.Net.NetworkCredential("Trieuhchse161563@gfpt.edu.vn", "0775711152haitrieu"); // ***use valid credentials***
+                smtp.UseDefaultCredentials = false;
+                smtp.Credentials = new System.Net.NetworkCredential("trieuhchse161563@fpt.edu.vn", "0775711152haitrieu"); // ***use valid credentials***
                 smtp.Port = 587;
 
                 //Or your Smtp Email ID and Password
                 smtp.EnableSsl = true;
                 smtp.Send(mail);
+                Console.WriteLine("Success");
             }
             catch (Exception ex)
             {
