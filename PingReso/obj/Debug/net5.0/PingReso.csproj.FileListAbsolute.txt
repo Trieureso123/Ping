@@ -22,3 +22,27 @@ G:\FPT university\OJT\Study_Backend\Project\PingReso\bin\Debug\net5.0\Microsoft.
 G:\FPT university\OJT\Study_Backend\Project\PingReso\bin\Debug\net5.0\Newtonsoft.Json.dll
 G:\FPT university\OJT\Study_Backend\Project\PingReso\obj\Debug\net5.0\PingReso.csproj.CopyComplete
 G:\FPT university\OJT\Study_Backend\Project\PingReso\bin\Debug\net5.0\appsettings.json
+D:\C#_WEB_API\Ping\PingReso\bin\Debug\net5.0\PingReso.exe
+D:\C#_WEB_API\Ping\PingReso\bin\Debug\net5.0\appsettings.json
+D:\C#_WEB_API\Ping\PingReso\bin\Debug\net5.0\PingReso.deps.json
+D:\C#_WEB_API\Ping\PingReso\bin\Debug\net5.0\PingReso.runtimeconfig.json
+D:\C#_WEB_API\Ping\PingReso\bin\Debug\net5.0\PingReso.runtimeconfig.dev.json
+D:\C#_WEB_API\Ping\PingReso\bin\Debug\net5.0\PingReso.dll
+D:\C#_WEB_API\Ping\PingReso\bin\Debug\net5.0\PingReso.pdb
+D:\C#_WEB_API\Ping\PingReso\bin\Debug\net5.0\Microsoft.Extensions.Configuration.dll
+D:\C#_WEB_API\Ping\PingReso\bin\Debug\net5.0\Microsoft.Extensions.Configuration.Abstractions.dll
+D:\C#_WEB_API\Ping\PingReso\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.dll
+D:\C#_WEB_API\Ping\PingReso\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\C#_WEB_API\Ping\PingReso\bin\Debug\net5.0\Microsoft.Extensions.Primitives.dll
+D:\C#_WEB_API\Ping\PingReso\bin\Debug\net5.0\Newtonsoft.Json.dll
+D:\C#_WEB_API\Ping\PingReso\obj\Debug\net5.0\PingReso.csproj.AssemblyReference.cache
+D:\C#_WEB_API\Ping\PingReso\obj\Debug\net5.0\PingReso.GeneratedMSBuildEditorConfig.editorconfig
+D:\C#_WEB_API\Ping\PingReso\obj\Debug\net5.0\PingReso.AssemblyInfoInputs.cache
+D:\C#_WEB_API\Ping\PingReso\obj\Debug\net5.0\PingReso.AssemblyInfo.cs
+D:\C#_WEB_API\Ping\PingReso\obj\Debug\net5.0\PingReso.csproj.CoreCompileInputs.cache
+D:\C#_WEB_API\Ping\PingReso\obj\Debug\net5.0\PingReso.csproj.CopyComplete
+D:\C#_WEB_API\Ping\PingReso\obj\Debug\net5.0\PingReso.dll
+D:\C#_WEB_API\Ping\PingReso\obj\Debug\net5.0\refint\PingReso.dll
+D:\C#_WEB_API\Ping\PingReso\obj\Debug\net5.0\PingReso.pdb
+D:\C#_WEB_API\Ping\PingReso\obj\Debug\net5.0\PingReso.genruntimeconfig.cache
+D:\C#_WEB_API\Ping\PingReso\obj\Debug\net5.0\ref\PingReso.dll
