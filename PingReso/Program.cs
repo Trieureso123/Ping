@@ -16,14 +16,53 @@ using System.Net.Http;
 
 namespace PingReso
 {
-    class Program
+    public class Domain
+    {
+        public string Domains { get; set; }
+    }
+
+
+    public class Program
     {
 
-        public class Domain
+        static string ReadJSON()
         {
-            public string Domains { get; set; }
+            string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory
+                + @"appsettings.json");
+            return path;
         }
-       
+
+        static void sendEmail(string email, string body, string error)
+        {
+            if (String.IsNullOrEmpty(email))
+                return;
+            try
+            {
+                MailMessage mail = new MailMessage();
+                mail.To.Add(email);
+                mail.From = new MailAddress("trieuhchse161563@fpt.edu.vn");
+                mail.Subject = $"Link : {error}, server down, MAY DAY!";
+
+                mail.Body = body;
+
+                mail.IsBodyHtml = true;
+                SmtpClient smtp = new SmtpClient();
+                smtp.Host = "smtp.gmail.com"; //Or Your SMTP Server Address
+                smtp.UseDefaultCredentials = false;
+                smtp.Credentials = new System.Net.NetworkCredential("trieuhchse161563@fpt.edu.vn", "0775711152haitrieu"); // ***use valid credentials***
+                smtp.Port = 587;
+
+                //Or your Smtp Email ID and Password
+                smtp.EnableSsl = true;
+                smtp.Send(mail);
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.WriteLine("Success");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
 
         static void Main(string[] args)
         {
@@ -33,8 +72,7 @@ namespace PingReso
             string URL = "";
 
             //Read Json file
-            string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory
-                + @"appsettings.json");
+            string path = ReadJSON();
 
             using (StreamReader sr = new StreamReader(path))
             {
@@ -44,8 +82,7 @@ namespace PingReso
 
                 string[] convertList = list.Domains.Split(",");
                 List<string> newList = new List<string>(convertList);
-
-
+                List<string> ERROR_URL = new List<string>();
                 Dictionary<string, int> hashmap = newList.Distinct().ToDictionary(x => x, x => 0);
                 for (; ; )
                 {
@@ -79,11 +116,8 @@ namespace PingReso
                                     Console.WriteLine("Error:{0}, {1}", item.Key, hashmap[item.Key]);
                                     if (hashmap[item.Key] == 2)
                                     {
-
                                         Console.WriteLine("Error at server: {0}", item.Key);
-
-
-
+                                        ERROR_URL.Add(item.Key);
                                         string logFolderName = "logs/";
                                         if (!Directory.Exists(logFolderName))
                                         {
@@ -96,14 +130,21 @@ namespace PingReso
 
                                         using (StreamWriter sw = new StreamWriter(fullFileLog))
                                         {
-                                            sw.WriteLine(String.Format("Error occurs at: {0}", now));
-                                            sw.WriteLine(String.Format("Error: {0}", ex.Message));
+                                            foreach (var listerr in ERROR_URL)
+                                            {
+                                                sw.WriteLine(String.Format("Error occurs at: {0}", now));
+                                                sw.WriteLine(String.Format("Error: {0}", ex.Message));
+                                                sw.WriteLine(String.Format("Error URL: {0}", listerr));
+                                                sw.WriteLine();
+                                            }
                                         }
-                                        string email = "trieuhchse161563@fpt.edu.vn";
-                                        string body = $"Error at link {URL}";
-                                        string error = URL;
-                                        sendEmail(email, body, error);
-                                        URL = "";
+                                        foreach (var emailsend in ERROR_URL)
+                                        {
+                                            string email = "trieuhchse161563@fpt.edu.vn";
+                                            string body = $"Error at link {emailsend}";
+                                            string error = emailsend;
+                                            sendEmail(email, body, error);
+                                        }
                                     }
                                     Thread.Sleep(1500);
                                     check = false;
@@ -123,40 +164,14 @@ namespace PingReso
             }
 
         }
-
-
-        public static void sendEmail(string email, string body, string error)
-        {
-            if (String.IsNullOrEmpty(email))
-                return;
-            try
-            {
-                MailMessage mail = new MailMessage();
-                mail.To.Add(email);
-                mail.From = new MailAddress("trieuhchse161563@fpt.edu.vn");
-                mail.Subject = $"Link : {error}, server down, MAY DAY!";
-
-                mail.Body = body;
-
-                mail.IsBodyHtml = true;
-                SmtpClient smtp = new SmtpClient();
-                smtp.Host = "smtp.gmail.com"; //Or Your SMTP Server Address
-                smtp.UseDefaultCredentials = false;
-                smtp.Credentials = new System.Net.NetworkCredential("trieuhchse161563@fpt.edu.vn", "0775711152haitrieu"); // ***use valid credentials***
-                smtp.Port = 587;
-
-                //Or your Smtp Email ID and Password
-                smtp.EnableSsl = true;
-                smtp.Send(mail);
-                Console.WriteLine("Success");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);   
-            }
-        }
     }
 }
 
+
+/*
+    - dòng 85 tạo 1 list chứa các error URL
+    - dòng 120 add các url bị lỗi vô\
+    - dòng 133 tới 140 dùng foreach lưu các lỗi vô 1 file.
+ */
 
 

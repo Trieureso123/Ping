@@ -1,2 +1,0 @@
-Error occurs at: 9/26/2022 4:53:57 PM
-Error: An exception occurred during a Ping request.
