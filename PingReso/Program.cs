@@ -72,8 +72,6 @@ namespace PingReso
                             {
                                 Console.ForegroundColor = ConsoleColor.Red;
                                 Console.WriteLine("Server do not exist!!!!");
-                               
-                               
 
                                 //string logFolderName = "logs/";
                                 //if (!Directory.Exists(logFolderName))
